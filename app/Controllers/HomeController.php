@@ -9,10 +9,10 @@ use App\Controllers\ControllerInterface;
  *
  * @package App\Controllers
  */
-class HomeController implements ControllerInterface
+class HomeController extends BaseController
 {
     public function fire()
     {
-
+        return $this->view('index');
     }
 }
