@@ -5,7 +5,7 @@
 */
 
 return [
-    'server'   => 'mysql:host=localhost;dbname=test',
-    'user'     => 'user',
-    'password' => 'password'
+    'server'   => 'mysql:host=localhost;dbname=homestead',
+    'user'     => 'homestead',
+    'password' => 'secret'
 ];

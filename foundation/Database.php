@@ -5,7 +5,7 @@ namespace Foundation;
 use PDO;
 
 /**
- * Facade Database
+ * Database Facade
  *
  * @package Foundation
  */
@@ -26,13 +26,13 @@ class Database
     }
 
     /**
-     * Prepare PDO statement
+     * Use magic for the first time
      *
-     * @param $query
-     * @return \PDOStatement
+     * @param $method
+     * @param $arguments
      */
-    public function prepare($query)
+    public function __call($method, $arguments)
     {
-        return $this->driver->prepare($query);
+        $this->driver->$method(...$arguments);
     }
 }
