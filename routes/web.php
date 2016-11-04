@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\HomeController;
+use App\Controllers\SignUpController;
 
 /**
  * App Routes Map
@@ -8,4 +9,5 @@ use App\Controllers\HomeController;
 
 return [
     '/' => HomeController::class,
+    '/sign-up' => SignUpController::class
 ];

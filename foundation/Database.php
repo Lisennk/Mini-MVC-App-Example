@@ -23,6 +23,8 @@ class Database
     public function __construct($config)
     {
         $this->driver = new PDO($config['server'], $config['user'], $config['password']);
+        $this->driver->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     }
 
     /**
@@ -33,6 +35,6 @@ class Database
      */
     public function __call($method, $arguments)
     {
-        $this->driver->$method(...$arguments);
+        return $this->driver->$method(...$arguments);
     }
 }
