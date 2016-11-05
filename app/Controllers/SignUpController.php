@@ -30,7 +30,7 @@ class SignUpController extends BaseController
     public function fire()
     {
         if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_FILES['picture']))
-            return $this->view('index', ['message' => 'Error: some of fields are empty']);
+            return $this->view('index', ['message' => 'You must fill all fields!']);
 
         if (!$this->fileIsAllowed($_FILES['picture']['name']))
             return $this->view('index', ['message' => 'Error: your picture should be in .jpg']);

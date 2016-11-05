@@ -6,7 +6,10 @@
       "psr-4": {
         "App\\": "app/",
         "Foundation\\": "foundation/"
-      }
+      },
+      "files": [
+        "app/helpers.php"
+      ]
     },
     "require-dev": {
         "laravel/homestead": "^3.0"

@@ -24,7 +24,6 @@ class Database
     {
         $this->driver = new PDO($config['server'], $config['user'], $config['password']);
         $this->driver->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     }
 
     /**

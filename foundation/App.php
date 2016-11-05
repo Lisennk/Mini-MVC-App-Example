@@ -25,11 +25,6 @@ class App
             $controller = new PageNotFoundController();
         }
 
-        try {
-            return $controller->fire();
-        } catch (\Exception $e) {
-            header('Location: /');
-            return 'Error: ' . $e;
-        }
+        return $controller->fire();
     }
 }

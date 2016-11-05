@@ -32,13 +32,13 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home page <span class="sr-only">(current)</span></a></li>
-                    <li><a href="https://lisennk.github.com">About author</a></li>
+                    <li class="active"><a href="#">{{ loc('Home page') }} <span class="sr-only">(current)</span></a></li>
+                    <li><a href="https://lisennk.github.com">{{ loc('About author') }}</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{  loc('More') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="https://vk.com/taras_serevann">My VK page</a></li>
-                            <li><a href="https://docs.google.com/document/d/1DzwDHhahidx2gNvL4ImT07zh-VMvu7DYcIDxwwlBxco/edit?usp=sharing">My CV</a></li>
+                            <li><a href="https://vk.com/taras_serevann">{{ loc('My VK page') }}</a></li>
+                            <li><a href="https://docs.google.com/document/d/1DzwDHhahidx2gNvL4ImT07zh-VMvu7DYcIDxwwlBxco/edit?usp=sharing">{{ loc('My CV') }}</a></li>
                         </ul>
                     </li>
                 </ul>
