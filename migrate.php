@@ -33,7 +33,7 @@ try {
     $db->query("CREATE INDEX emails ON users (email);");
 
     echo 'Success!';
-} catch (PDOException $e) {
+} catch (\Exception $e) {
     echo "Error: " . $e->getMessage();
 }
 
