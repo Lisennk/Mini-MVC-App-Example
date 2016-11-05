@@ -2,31 +2,18 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Base\BaseRepository;
 use Foundation\Database;
 
 /**
  * Class UserRepository
  */
-class UserRepository
+class UserRepository extends BaseRepository
 {
     /**
      * @var string DB table name
      */
     protected $table = 'users';
-
-    /**
-     * @var Database
-     */
-    protected $db;
-
-    /**
-     * UserRepository constructor.
-     */
-    public function __construct()
-    {
-        $config = include(dirname(__FILE__, 3) . '/config/db.php');
-        $this->db = new Database($config);
-    }
 
     /**
      * Creates a new user
@@ -56,16 +43,23 @@ class UserRepository
      * @param $password
      * @return bool
      */
-    public function has($email, $password)
+    public function exists($email, $password)
     {
-        $query = "SELECT `email` FROM {$this->table} WHERE `email` = :email AND `password` = :password LIMIT 1";
-
-        $result = $this->db->prepare($query)->execute([
-            ':email' => $email,
-            ':password' => password_hash($password, PASSWORD_DEFAULT)
-        ])->fetch();
-
-        if ($result) return true;
+        if ($this->getByData($email, $password)) return true;
         return false;
+    }
+
+    /**
+     * Returns user data by its email
+     *
+     * @param $email
+     * @param $password
+     * @return bool|\stdClass
+     */
+    public function getByData($email, $password)
+    {
+        $statement = $this->db->prepare("SELECT * FROM {$this->table} WHERE `email` = :email AND `password` = :password");
+        $result = $statement->execute([':email' => $email, ':password' => password_hash($password, PASSWORD_DEFAULT)]);
+        return $result ? $statement->fetchObject() : null;
     }
 }

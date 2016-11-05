@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Base;
 
-use App\Controllers\ControllerInterface;
+use App\Controllers\Base\ControllerInterface;
 use Philo\Blade\Blade;
 
 /**

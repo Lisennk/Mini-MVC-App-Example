@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Controllers\ControllerInterface;
+use App\Controllers\Base\BaseController;
+use App\Services\Auth;
 
 /**
  * Class HomeController
@@ -11,8 +12,17 @@ use App\Controllers\ControllerInterface;
  */
 class HomeController extends BaseController
 {
+    /**
+     * Display sign up/sign in form or user profile
+     *
+     * @return mixed
+     */
     public function fire()
     {
-        return $this->view('index');
+        if (Auth::check()) {
+            return $this->view('index', ['user' => Auth::user()]);
+        } else {
+            return $this->view('index');
+        }
     }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Base\BaseController;
+
 /**
  * Class PageNotFoundController
  * @package App\Controllers
  */
-class PageNotFoundController implements ControllerInterface
+class PageNotFoundController extends BaseController
 {
     /**
      * @return string

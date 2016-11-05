@@ -3,7 +3,12 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepository;
+use App\Controllers\Base\BaseController;
 
+/**
+ * Class SignUpController
+ * @package App\Controllers
+ */
 class SignUpController extends BaseController
 {
     protected $users;
