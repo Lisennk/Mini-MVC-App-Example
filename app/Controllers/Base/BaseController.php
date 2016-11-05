@@ -19,7 +19,7 @@ abstract class BaseController implements ControllerInterface
      */
     public function __construct()
     {
-        $this->engine = new Blade(dirname(__FILE__, 3) . '/resources/views', dirname(__FILE__, 3) . '/cache');
+        $this->engine = new Blade(dirname(__FILE__, 4) . '/resources/views', dirname(__FILE__, 4) . '/cache');
     }
 
     /**

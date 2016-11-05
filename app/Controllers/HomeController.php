@@ -13,14 +13,28 @@ use App\Services\Auth;
 class HomeController extends BaseController
 {
     /**
+     * @var Auth
+     */
+    protected $auth;
+
+    /**
+     * HomeController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->auth = new Auth();
+    }
+
+    /**
      * Display sign up/sign in form or user profile
      *
      * @return mixed
      */
     public function fire()
     {
-        if (Auth::check()) {
-            return $this->view('index', ['user' => Auth::user()]);
+        if ($this->auth->isLoggedIn()) {
+            return $this->view('index', ['user' => $this->auth->getLoggedUser()]);
         } else {
             return $this->view('index');
         }

@@ -32,10 +32,11 @@ class SignUpController extends BaseController
         if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_FILES['picture']))
             return $this->view('index', ['message' => 'Error: some of fields are empty']);
 
-        $userId = $this->users->add($_POST['name'], $_POST['email'], $_POST['password']);
-
-        if (!$this->saveUploadedFile('picture', $userId . '.jpg'))
+        if (!$this->fileIsAllowed($_FILES['picture']['name']))
             return $this->view('index', ['message' => 'Error: your picture should be in .jpg']);
+
+        $userId = $this->users->add($_POST['name'], $_POST['email'], $_POST['password']);
+        $this->saveUploadedFile('picture', $userId . '.jpg');
 
         return $this->view('index', ['message' => 'Success! Now you can log in']);
     }

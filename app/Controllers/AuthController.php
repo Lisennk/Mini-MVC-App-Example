@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\Base\BaseController;
-use App\Repositories\UserRepository;
 use App\Services\Auth;
 
 /**
@@ -14,9 +13,9 @@ use App\Services\Auth;
 class AuthController extends BaseController
 {
     /**
-     * @var UserRepository
+     * @var Auth
      */
-    protected $users;
+    protected $auth;
 
     /**
      * AuthController constructor.
@@ -24,7 +23,7 @@ class AuthController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->users = new UserRepository;
+        $this->auth = new Auth();
     }
 
     /**
@@ -35,14 +34,15 @@ class AuthController extends BaseController
     public function fire()
     {
 
-        if (empty($_POST['email']) || empty($_POST['password']))
+        if (empty($_POST['email']) || empty($_POST['password'])) {
             return $this->view('index', ['message' => 'You must fill all fields!']);
-
-        if (Auth::check()) {
-            header('Location: /');
-            return true;
         }
 
-        return $this->view('index', ['message' => 'Incorrect data!']);
+        if ($this->auth->logIn($_POST['email'], $_POST['password'])) {
+            header('Location: /');
+            return true;
+        } else {
+            return $this->view('index', ['message' => 'Incorrect data! Try again.']);
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 
 /**
- * Auth provider
+ * Class Auth
  *
  * @package App\Services
  */
@@ -14,22 +14,70 @@ class Auth
     /**
      * @var UserRepository
      */
-    static protected $users;
+    protected $repository;
 
     /**
-     * Returns true if current user is logged in, false if not
+     * @var \stdClass Current user
+     */
+    protected $user;
+
+    /**
+     * Auth constructor.
+     */
+    public function __construct()
+    {
+        $this->repository = new UserRepository;
+    }
+
+    /**
+     * True if email and password are correct
+     *
+     * @param $email
+     * @param $password
+     * @return bool
+     */
+    public function verify($email, $password)
+    {
+        return $this->repository->emailAndPassExists($email, $password);
+    }
+
+    /**
+     * True if current user is logged in
      *
      * @return bool
      */
-    static function check()
+    public function isLoggedIn()
     {
-        if (empty(self::$users)) self::$users = new UserRepository;
+        if (empty($_COOKIE['id']) || empty($_COOKIE['password'])) return false;
+        return $this->repository->idAndHashedPassExists($_COOKIE['id'], $_COOKIE['password']);
+    }
 
-        if (empty($_REQUEST['email']) || empty($_REQUEST['password'])) return false;
+    /**
+     * Returns current logged in user data
+     *
+     * @return mixed|\stdClass
+     */
+    public function getLoggedUser()
+    {
+        if (empty($this->user) && $this->isLoggedIn()) {
+            $this->user = $this->repository->getById($_COOKIE['id']);
+        }
 
-        if (self::$users->exists($_REQUEST['email'], $_REQUEST['password'])) {
-            setcookie('email', $_REQUEST['email'], time() + 3600 * 12 * 30);
-            setcookie('password', $_REQUEST['password'], time() + 3600 * 12 * 30);
+        return $this->user;
+    }
+
+    /**
+     * Log in current user
+     *
+     * @param $email
+     * @param $password
+     * @return bool
+     */
+    public function logIn($email, $password)
+    {
+        if ($this->verify($email, $password)) {
+            $this->user = $this->repository->getByEmail($email);
+            $this->createSession();
             return true;
         } else {
             return false;
@@ -37,16 +85,11 @@ class Auth
     }
 
     /**
-     * Returns current user data
-     *
-     * @return bool|\stdClass
+     * Create cookies
      */
-    static function user()
+    protected function createSession()
     {
-        if (self::check()) {
-            return self::$users->getByData($_COOKIE['email'], $_COOKIE['password']);
-        } else {
-            return false;
-        }
+        setcookie('id', $this->user->id, time() + 3600 * 12 * 30);
+        setcookie('password', $this->user->password, time() + 3600 * 12 * 30);
     }
 }

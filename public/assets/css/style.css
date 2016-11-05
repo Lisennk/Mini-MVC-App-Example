@@ -1,0 +1,26 @@
+body {
+    padding-bottom: 30px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.name {
+    font-size: 30px;
+}
+
+.lang {
+    float: right;
+}
+
+.hello {
+    font-size: 15px;
+}
+
+.desc {
+    font-size: 18px;
+    padding-bottom: 20px;
+}

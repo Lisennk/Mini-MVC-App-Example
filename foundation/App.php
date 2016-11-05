@@ -3,7 +3,7 @@
 namespace Foundation;
 
 use App\Controllers\PageNotFoundController;
-use App\Controllers\ControllerInterface;
+use App\Controllers\Base\ControllerInterface;
 
 /**
  * Class App
@@ -25,6 +25,11 @@ class App
             $controller = new PageNotFoundController();
         }
 
-        return $controller->fire();
+        try {
+            return $controller->fire();
+        } catch (\Exception $e) {
+            header('Location: /');
+            return 'Error: ' . $e;
+        }
     }
 }

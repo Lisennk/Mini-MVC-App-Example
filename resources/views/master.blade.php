@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" crossorigin="anonymous">
@@ -44,11 +45,7 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
-    <br/>
-    <br/>
-    <br/>
 </div> <!-- /container -->
 </body>
 </html>

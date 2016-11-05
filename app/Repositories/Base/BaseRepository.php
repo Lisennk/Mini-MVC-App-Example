@@ -20,7 +20,7 @@ abstract class BaseRepository
      */
     public function __construct()
     {
-        $config = include(dirname(__FILE__, 3) . '/config/db.php');
+        $config = include(dirname(__FILE__, 4) . '/config/db.php');
         $this->db = new Database($config);
     }
 }
