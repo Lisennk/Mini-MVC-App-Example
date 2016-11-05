@@ -12,6 +12,7 @@ Test job for Webmasters Forge LTD
 git clone https://github.com/Lisennk/Webmasters-Forge-LTD-Test-Job.git
 cd Webmasters-Forge-LTD-Test-Job
 composer install
+composer dump-autoload
 ```
 Now create new database and set it's data in `config/db.php` file. 
 Then run `php migrate.php` to create database tables. Finally, make `public` folder your document root, set chmod to `cache` and `public/usercontent/*` and you are ready to go. 
