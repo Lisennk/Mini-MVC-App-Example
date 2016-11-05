@@ -8,19 +8,19 @@
         <form action="/sign-up" method="post" enctype="multipart/form-data" class="text-left">
             <div class="form-group">
                 <label for="inputEmail">{{ loc('Name') }}</label>
-                <input name="name" type="text" class="form-control" id="inputEmail" placeholder="{{ loc('For example, John') }}">
+                <input required name="name" type="text" class="form-control" id="inputEmail" placeholder="{{ loc('For example, John') }}">
             </div>
             <div class="form-group">
                 <label for="inputEmail">{{ loc('Email address') }}</label>
-                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="{{ loc('For example, john@gmail.com') }}">
+                <input required name="email" type="email" class="form-control" id="inputEmail" placeholder="{{ loc('For example, john@gmail.com') }}">
             </div>
             <div class="form-group">
                 <label for="inputPassword">{{ loc('Password') }}</label>
-                <input name="password" type="password" class="form-control" id="inputPassword" placeholder="{{ loc('Dont tell anyone this password') }}">
+                <input required name="password" type="password" class="form-control" id="inputPassword" placeholder="{{ loc('Dont tell anyone this password') }}">
             </div>
             <div class="form-group">
                 <label for="inputFile">{{ loc('Your photo') }}</label>
-                <input name="picture" type="file" id=inputFile">
+                <input required name="picture" type="file" id=inputFile">
                 <p class="help-block">{{ loc('You can uplaod any .jpg image.') }}</p>
             </div>
             <button type="submit" class="btn btn-success">{{ loc('Sign up') }}</button>
@@ -31,11 +31,11 @@
         <form action="/sign-in" method="POST" class="text-left">
             <div class="form-group">
                 <label for="inputEmail">{{ loc('Email address') }}</label>
-                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="{{ loc('For example, john@gmail.com') }}">
+                <input required name="email" type="email" class="form-control" id="inputEmail" placeholder="{{ loc('For example, john@gmail.com') }}">
             </div>
             <div class="form-group">
                 <label for="inputPassword">{{ loc('Password') }}</label>
-                <input name="password" type="password" class="form-control" id="inputPassword" placeholder="{{ loc('Your password on this site') }}">
+                <input required name="password" type="password" class="form-control" id="inputPassword" placeholder="{{ loc('Your password on this site') }}">
             </div>
             <button type="submit" class="btn btn-primary">{{ loc('Sign in') }}</button>
         </form>

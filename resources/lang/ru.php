@@ -34,5 +34,6 @@ return [
     'Welcome home' => 'Добро пожаловать домой',
     'Your email is' => 'Ваш e-mail это',
     'and i hope you like this site' => 'и я надеюсь вам понравился этот сайт',
-    'Log out' => 'Выйти'
+    'Log out' => 'Выйти',
+    'Incorrect email!' => 'Неправильный email!'
 ];

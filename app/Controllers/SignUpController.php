@@ -35,6 +35,9 @@ class SignUpController extends BaseController
         if (!$this->fileIsAllowed($_FILES['picture']['name']))
             return $this->view('index', ['message' => 'Error: your picture should be in .jpg']);
 
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+            return $this->view('index', ['message' => 'Incorrect email!']);
+
         $userId = $this->users->add($_POST['name'], $_POST['email'], $_POST['password']);
         $this->saveUploadedFile('picture', $userId . '.jpg');
 
