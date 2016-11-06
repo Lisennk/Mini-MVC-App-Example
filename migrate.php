@@ -3,6 +3,8 @@
 /**
  * Creates table in database.
  * Run this file to install app.
+ *
+ * Type in console: php migrate.php
  */
 
 require_once 'vendor/autoload.php';
@@ -23,7 +25,8 @@ try {
           name varchar(255),
           email varchar(255),
           password varchar(255),
-          PRIMARY KEY (id)
+          PRIMARY KEY (id),
+          UNIQUE KEY (email)
         );
     ");
 

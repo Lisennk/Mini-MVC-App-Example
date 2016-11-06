@@ -1,6 +1,8 @@
 {
     "require": {
-      "philo/laravel-blade": "3.*"
+      "php" : "^7.0",
+      "philo/laravel-blade": "3.*",
+      "ext-imagick": "*"
     },
     "autoload": {
       "psr-4": {

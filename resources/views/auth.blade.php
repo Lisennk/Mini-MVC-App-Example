@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="inputFile">{{ loc('Your photo') }}</label>
                 <input required name="picture" type="file" id=inputFile">
-                <p class="help-block">{{ loc('You can uplaod any .jpg image.') }}</p>
+                <p class="help-block">{{ loc('Upload picture in .jpg, .png or .gif') }}</p>
             </div>
             <button type="submit" class="btn btn-success">{{ loc('Sign up') }}</button>
         </form>

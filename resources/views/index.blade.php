@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Welcome!')
+@section('title', 'Webmasters Forge')
 
 @section('content')
     @if (isset($message))
