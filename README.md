@@ -1,5 +1,5 @@
-# :star: Webmasters Forge LTD Test Job :star:
-Test job for Webmasters Forge LTD with OOP.
+# :star: Mini MVC App Example :star:
+With user registration, localization and file upload.
 
 **:zap: Requirements:**
 * PHP 7
